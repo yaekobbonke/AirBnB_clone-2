@@ -7,6 +7,7 @@ from sqlalchemy import Column, String, metadata
 
 Base = declarative_base()
 
+
 class User(BaseModel, Base):
     """This class defines a user by various attributes"""
     __tablename__ = 'users'
@@ -15,5 +16,6 @@ class User(BaseModel, Base):
     password = Column(String(128)),
     first_name = Column(128),
     last_name = Column(128)
+
 
 Base.metadata.create_all(engine)
