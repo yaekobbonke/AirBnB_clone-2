@@ -26,24 +26,6 @@ association_table = Table("place_amenity", Base.metadata,
 
 class Place(BaseModel, Base):
     """Represents a Place for a MySQL database.
-
-    Inherits from SQLAlchemy Base and links to the MySQL table places.
-
-    Attributes:
-        __tablename__ (str): The name of the MySQL table to store places.
-        city_id (sqlalchemy String): The place's city id.
-        user_id (sqlalchemy String): The place's user id.
-        name (sqlalchemy String): The name.
-        description (sqlalchemy String): The description.
-        number_rooms (sqlalchemy Integer): The number of rooms.
-        number_bathrooms (sqlalchemy Integer): The number of bathrooms.
-        max_guest (sqlalchemy Integer): The maximum number of guests.
-        price_by_night (sqlalchemy Integer): The price by night.
-        latitude (sqlalchemy Float): The place's latitude.
-        longitude (sqlalchemy Float): The place's longitude.
-        reviews (sqlalchemy relationship): The Place-Review relationship.
-        amenities (sqlalchemy relationship): The Place-Amenity relationship.
-        amenity_ids (list): An id list of all linked amenities.
     """
     __tablename__ = "places"
     city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
@@ -59,7 +41,7 @@ class Place(BaseModel, Base):
     reviews = relationship("Review", backref="place", cascade="delete")
     amenities = relationship("Amenity", secondary="place_amenity",
                              viewonly=False)
-    amenity_ids = []
+
 
     if getenv("HBNB_TYPE_STORAGE", None) != "db":
         @property
@@ -81,6 +63,6 @@ class Place(BaseModel, Base):
             return amenity_list
 
         @amenities.setter
-        def amenities(self, value):
-            if type(value) == Amenity:
-                self.amenity_ids.append(value.id)
+        def amenities(self, new_value):
+            if type(new_value) == Amenity:
+                self.amenity_ids.append(new_value.id)
