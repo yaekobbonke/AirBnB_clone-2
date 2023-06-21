@@ -8,6 +8,8 @@ from sqlalchemy import String, Culumn, metadata
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()
+
+
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
     __tablename__ = "cities"
@@ -15,4 +17,6 @@ class City(BaseModel, Base):
     name = Column(String(128))
     state_id = Column(String(60), foreinKey('states.id'))
     places = relationship(Place, backref='City', cascade='delete')
+
+
 Base.metadata.create_all(engine)
