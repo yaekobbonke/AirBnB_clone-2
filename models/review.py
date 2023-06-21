@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """ Review module for the HBNB project """
+from models.base_model import Base
 from models.base_model import BaseModel
-import sqlalchemy
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Colum, String, metadata
-from models import base_model
-
-Base = declarative_base()
+from sqlalchemy import Column
+from sqlalchemy import ForeignKey
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
 
 
 class Review(BaseModel, Base):
@@ -14,7 +13,5 @@ class Review(BaseModel, Base):
     __tablename__ = "reviews"
 
     text = Column(String(1024))
-    place_id = Column(String(60), foreignKey('places.id'))
-    user_id = Column(String(60), foreignKey('users.id'))
-
-Base.metadata.create_all()
+    place_id = Column(String(60), ForeignKey('places.id'))
+    user_id = Column(String(60), ForeignKey('users.id'))

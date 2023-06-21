@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
+import models
+from os import getenv
+from models.base_model import Base
 from models.base_model import BaseModel
-import sqlalchemy
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import String, Column
-from sqlalchemy.orm import relationship
 from models.city import City
-
-Base = declarative_base()
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
 
 
 class State(BaseModel, Base):
