@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
 from models.base_model import BaseModel
-from models import base_model
+from models.base_model import Base
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import String, Culumn, metadata
+from sqlalchemy import String, Culumn, metadata, ForeignKey
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()
 
 
 class City(BaseModel, Base):
@@ -15,8 +13,5 @@ class City(BaseModel, Base):
     __tablename__ = "cities"
 
     name = Column(String(128))
-    state_id = Column(String(60), foreinKey('states.id'))
+    state_id = Column(String(60), ForeinKey('states.id'))
     places = relationship(Place, backref='City', cascade='delete')
-
-
-Base.metadata.create_all(engine)
