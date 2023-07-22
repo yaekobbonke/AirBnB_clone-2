@@ -3,7 +3,7 @@
 starts Flask web application
 listens on 0.0.0.0, port 5000
 routes:
-    "/": returns HELLO HBNB
+    "/": returns Hello HBNB
     "/hbnb": returns HBNB
 """
 from flask import Flask
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def hello_hbnb():
-    """Displays HELLO HBNB"""
+    """Displays Hello HBNB"""
     return "Hello HBNB!"
 
 
