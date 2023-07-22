@@ -1,12 +1,19 @@
 #!/usr/bin/python3
-# Flask module
+
+"""
+Flask application
+listens on port 0.0.0.0
+"""
 from flask import Flask
-# Flask class initialization
+n
 app = Flask(__name__)
+
+
 @app.route("/", strict_slashes=False)
-# Flask view function
 def hello_HBNB():
-    print('HELLO HBNB')
+    """ prints hello_HBNB"""
+    return HELLO HBNB
+
 
 if __name__ == '__main__':
-    app.run(port=5000, host='0.0.0.0')
+    app.run(host='0.0.0.0')
