@@ -37,7 +37,7 @@ def c(text):
 
     replace any underscore with empty space
     """
-    text = replace(_, " ")
+    text = replace("_", " ")
     return "c {}".format(text)
 
 
@@ -48,7 +48,7 @@ def python(text="is cool"):
     displays the value of python followed by text
     replaces any underscore with empty space
     """
-    text = replace(_, " ")
+    text = replace("_", " ")
     return "python {}".format(text)
 
 
