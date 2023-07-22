@@ -40,13 +40,11 @@ def c(text):
 
 
 @app.route("/python/(<text>", strict_slashes=False)
-def python(text):
+def python(text="is cool"):
     """
     displays the value of python followed by text
     """
     text = replace(_, " ")
-    if text == None:
-        text = "is cool"
     return "python {}".format(text)
 
 
