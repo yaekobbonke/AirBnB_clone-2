@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """
-starts flask application
-listens on 0.0.0.0
-It has two routes
-"/" returns HELLO HBNB
-"/hbnb" returns HBNB
+starts Flask application listens on 0.0.0.0, port 5000
+routes:
+    "/" returns HELLO HBNB
+    "/hbnb" returns HBNB
 """
 from flask import Flask
 app = Flask(__name__)
@@ -23,4 +22,4 @@ def hbnb():
 
 
 if __name__ == "__main__.py":
-    app.run(host='0.0.0.0', port = 5000)
+    app.run(host='0.0.0.0')
