@@ -19,9 +19,11 @@ class FileStorage:
                     cls_dict[k] = v
             return cls_dict
         return self.__objects
+
     def delete(self, obj=None):
         """Delete a given object from __objects, if it exists."""
         try:
+
             del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
         except (AttributeError, KeyError):
             pass
@@ -59,9 +61,10 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
     def close(self):
         """closes the session"""
-       self.reload()
+        self.reload()
