@@ -16,13 +16,13 @@ from models import storage
 @app.teardown_appcontext
 def teardown_appcontext():
     """remove the current SQLAlchemy Session"""
-    return self.storage.close()
+    storage.close()
 
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
     """displays HTML page"""
-    return render_template("7-states_list.html")
+    return render_template("7-states_list.html", state=state)
 
 
 
